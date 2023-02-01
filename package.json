@@ -1,0 +1,34 @@
+{
+  "name": "cybervasya",
+  "version": "1.0.0",
+  "description": "Бот который смог",
+  "private": "true",
+  "scripts": {
+    "dev": "nodemon src/",
+    "start": "node src/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Herzik/cybervasya.git"
+  },
+  "keywords": [
+    "bot",
+    "telegram",
+    "javascript",
+    "telegraf.js"
+  ],
+  "author": "Pavel Herzik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Herzik/cybervasya/issues"
+  },
+  "homepage": "https://github.com/Herzik/cybervasya#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "node-fetch": "^3.3.0",
+    "telegraf-develop": "^5.1.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
