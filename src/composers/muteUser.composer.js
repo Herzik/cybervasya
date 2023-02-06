@@ -1,8 +1,9 @@
 const { Composer } = require('telegraf-develop')
+const accessMiddleware = require('../middlewares/access.middleware')
 
 const composer = new Composer()
 
-composer.command('mute', ctx => {
+composer.command('mute', accessMiddleware, ctx => {
   const chatId = ctx.chat.id
   const userId = ctx.message.reply_to_message.from.id
   const userName = ctx.message.reply_to_message.from.first_name
@@ -34,7 +35,7 @@ composer.command('mute', ctx => {
     .catch(err => console.log(err))
 })
 
-composer.command('unmute', ctx => {
+composer.command('unmute', accessMiddleware, ctx => {
   const chatId = ctx.chat.id
   const userId = ctx.message.reply_to_message.from.id
   const userName = ctx.message.reply_to_message.from.first_name
