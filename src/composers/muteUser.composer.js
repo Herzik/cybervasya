@@ -2,11 +2,21 @@ const { Composer } = require('telegraf-develop')
 const accessMiddleware = require('../middlewares/access.middleware')
 
 const composer = new Composer()
+//====================
+//NOTE:В этом коде нет очевидных ошибок. Однако, рекомендуется использовать
+//обработку ошибок для всех Promise-функций, чтобы предотвратить возможные
+//непредвиденные ошибки. Также следует добавить проверку, что входные данные
+//(chatId, userId) являются допустимыми, чтобы избежать возможных ошибок.
+//====================
 
 composer.command('mute', accessMiddleware, ctx => {
+  if (!ctx.message.reply_to_message) {
+    return ctx.reply('Сделай реплай юзера, что бы его замутить =)')
+  }
+
   const chatId = ctx.chat.id
-  const userId = ctx.message.reply_to_message.from.id
-  const userName = ctx.message.reply_to_message.from.first_name
+  const userId = ctx.message.reply_to_message?.from.id
+  const userName = ctx.message.reply_to_message?.from.first_name
 
   ctx.telegram
     .getChatMember(chatId, userId)
@@ -36,6 +46,10 @@ composer.command('mute', accessMiddleware, ctx => {
 })
 
 composer.command('unmute', accessMiddleware, ctx => {
+  if (!ctx.message.reply_to_message) {
+    return ctx.reply('Сделай реплай юзера, что бы его размутить =)')
+  }
+
   const chatId = ctx.chat.id
   const userId = ctx.message.reply_to_message.from.id
   const userName = ctx.message.reply_to_message.from.first_name

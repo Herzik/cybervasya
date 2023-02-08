@@ -13,6 +13,6 @@ bot.use(sendGif)
 bot.use(sendWeather)
 bot.use(welcomeMessage)
 bot.use(farewellMessage)
-bot.use(muteUser).catch(err => console.log(err))
+bot.use(muteUser).catch(err => console.error(err))
 
 bot.launch(console.log('Я живой!'))
